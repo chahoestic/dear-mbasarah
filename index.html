@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mba Sarah 🥤</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Lora:wght@400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F1E8;--paper:#FFFCF5;--sage:#5C8374;--sage-dark:#2C5F4A;
+    --gold:#D4A574;--gold-dark:#A57C4D;--coral:#E8896B;--ink:#3A3633;
+    --tape:rgba(212,165,116,0.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden}
+  body{
+    font-family:'Lora', serif;
+    background:
+      radial-gradient(circle at 20% 10%, #E8EFE5 0, transparent 40%),
+      radial-gradient(circle at 80% 60%, #F5E8D5 0, transparent 45%),
+      var(--bg);
+    color:var(--ink);min-height:100vh;line-height:1.7;
+  }
+  .leaf{position:fixed;top:-40px;font-size:20px;opacity:.5;pointer-events:none;animation:fall linear infinite;z-index:0}
+  @keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(360deg)}}
+
+  /* INTRO */
+  #intro{position:fixed;inset:0;background:linear-gradient(160deg,#F5F1E8 0%, #E5DDC8 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:50;transition:opacity .8s ease, visibility .8s ease;padding:20px}
+  #intro.gone{opacity:0;visibility:hidden}
+  #intro .deco{font-family:'Caveat',cursive;color:var(--sage-dark);font-size:24px;margin-bottom:6px;letter-spacing:2px}
+  #intro h1{font-family:'Cormorant Garamond',serif;color:var(--sage-dark);font-size:clamp(34px,6vw,50px);margin-bottom:10px;font-weight:600}
+  #intro .sub{font-size:16px;color:#6b6660;margin-bottom:30px;font-style:italic;font-family:'Cormorant Garamond',serif}
+
+  .box-wrap{position:relative;width:220px;height:200px;cursor:pointer;perspective:800px}
+  .box-base{position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(180deg,#6E9684,#5C8374);border-radius:8px;box-shadow:0 18px 35px rgba(44,95,74,.25), inset 0 -8px 0 rgba(0,0,0,.12)}
+  .box-base::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:26px;transform:translateX(-50%);background:var(--gold)}
+  .box-lid{position:absolute;top:50px;left:-8px;right:-8px;height:50px;background:linear-gradient(180deg,#7BA593,#5C8374);border-radius:8px;box-shadow:0 6px 12px rgba(44,95,74,.25);transform-origin:center bottom;transition:transform 1s cubic-bezier(.5,-0.3,.3,1.4), top 1s ease, opacity .6s ease .8s;z-index:3}
+  .box-lid::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:26px;transform:translateX(-50%);background:var(--gold)}
+  .bow{position:absolute;top:36px;left:50%;transform:translateX(-50%);font-size:38px;z-index:4;transition:transform .8s ease, opacity .6s ease}
+  .tumbler{position:absolute;top:60px;left:50%;transform:translateX(-50%) scale(0);font-size:80px;opacity:0;transition:transform 1s cubic-bezier(.2,1.3,.5,1) .5s, opacity .8s ease .5s, top 1s ease .5s;z-index:2}
+  .box-wrap.open .box-lid{transform:translateY(-100px) rotate(-25deg);opacity:0}
+  .box-wrap.open .bow{transform:translate(-50%,-150px) rotate(45deg);opacity:0}
+  .box-wrap.open .tumbler{transform:translateX(-50%) scale(1);opacity:1;top:-30px}
+
+  .tap-hint{margin-top:30px;color:var(--sage-dark);font-family:'Caveat',cursive;font-size:24px;animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.4}}
+
+  #reveal-msg{margin-top:24px;background:var(--paper);padding:18px 24px;border-radius:14px;max-width:420px;font-size:16px;box-shadow:0 8px 20px rgba(44,95,74,.15);border:2px dashed var(--sage);opacity:0;transform:translateY(20px);transition:opacity .8s ease 1.2s, transform .8s ease 1.2s;text-align:center;font-family:'Lora',serif}
+  .box-wrap.open ~ #reveal-msg{opacity:1;transform:translateY(0)}
+  #scroll-btn{margin-top:18px;background:var(--sage-dark);color:white;border:none;padding:12px 30px;border-radius:30px;font-size:16px;font-family:'Lora',serif;font-weight:600;cursor:pointer;box-shadow:0 6px 16px rgba(44,95,74,.35);opacity:0;pointer-events:none;transition:opacity .6s ease 2s, transform .2s;letter-spacing:.5px}
+  .box-wrap.open ~ #scroll-btn{opacity:1;pointer-events:auto}
+  #scroll-btn:hover{transform:translateY(-2px)}
+
+  /* SCRAPBOOK */
+  .book{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:80px 24px 120px}
+  .book h2.title{font-family:'Cormorant Garamond',serif;color:var(--sage-dark);font-size:clamp(40px,7vw,58px);text-align:center;margin-bottom:60px;font-weight:600;font-style:italic}
+  .book h2.title .small{display:block;font-family:'Caveat',cursive;font-style:normal;font-size:.45em;color:var(--gold-dark);letter-spacing:3px;margin-bottom:6px}
+  .entry{position:relative;margin:70px auto;opacity:0;transform:translateY(40px);transition:opacity .9s ease, transform .9s ease}
+  .entry.in{opacity:1;transform:translateY(0)}
+  .polaroid{background:var(--paper);padding:14px 14px 50px;box-shadow:0 14px 30px rgba(44,95,74,.15), 0 2px 6px rgba(0,0,0,.05);width:260px;position:relative;transition:transform .3s ease}
+  .polaroid:hover{transform:rotate(0) scale(1.03) !important}
+  .polaroid .photo{width:100%;height:230px;background:#e8e4d5;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;color:#a5a195;font-size:14px;text-align:center;padding:10px}
+  .polaroid .cap{font-family:'Caveat',cursive;text-align:center;margin-top:10px;color:var(--sage-dark);font-size:18px}
+  .tape{position:absolute;width:80px;height:24px;background:var(--tape);box-shadow:0 2px 4px rgba(0,0,0,.08)}
+  .tape.tl{top:-10px;left:-15px;transform:rotate(-35deg)}
+  .tape.tr{top:-10px;right:-15px;transform:rotate(35deg)}
+
+  .note{background:var(--paper);padding:26px 30px;border-radius:8px;box-shadow:0 10px 24px rgba(44,95,74,.12);font-size:17px;line-height:1.75;position:relative;border:1px solid rgba(212,165,116,.25)}
+  .note p{margin:0}
+  .note p + p{margin-top:14px}
+
+  .entry.left{display:flex;gap:30px;align-items:flex-start}
+  .entry.left .polaroid{transform:rotate(-4deg);flex-shrink:0}
+  .entry.left .note{flex:1;transform:rotate(.5deg);margin-top:30px}
+  .entry.right{display:flex;gap:30px;align-items:flex-start;flex-direction:row-reverse}
+  .entry.right .polaroid{transform:rotate(3deg);flex-shrink:0}
+  .entry.right .note{flex:1;transform:rotate(-1deg);margin-top:30px}
+  .entry.center{text-align:center}
+  .entry.center .note{display:inline-block;max-width:560px;transform:rotate(-.5deg);font-size:17px;text-align:left}
+
+  @media (max-width:640px){
+    .entry.left,.entry.right{flex-direction:column;align-items:center}
+    .entry.right{flex-direction:column}
+    .polaroid{width:240px}
+  }
+
+  .hl-gold{background:linear-gradient(120deg,#F5DDB8 0%,#F5DDB8 100%);background-repeat:no-repeat;background-size:0% 60%;background-position:0 90%;padding:0 4px;font-weight:600;transition:background-size .9s ease}
+  .entry.in .hl-gold{background-size:100% 60%;transition-delay:.4s}
+
+  .hl-sage{background:linear-gradient(120deg,#C5DCC8 0%,#C5DCC8 100%);background-repeat:no-repeat;background-size:0% 60%;background-position:0 90%;padding:0 4px;font-weight:600;transition:background-size .9s ease}
+  .entry.in .hl-sage{background-size:100% 60%;transition-delay:.5s}
+
+  .hydrate{display:inline-block;font-weight:700;color:#2E86AB;position:relative}
+  .drop{display:inline-block}
+  .entry.in .drop{animation:dropFall 1.8s ease 1s infinite}
+  @keyframes dropFall{
+    0%{transform:translateY(-4px);opacity:1}
+    60%{transform:translateY(4px);opacity:1}
+    80%{transform:translateY(6px) scale(.8,1.2);opacity:.6}
+    100%{transform:translateY(8px) scale(1.2,.8);opacity:0}
+  }
+
+  .route{display:inline-block;font-family:'Caveat',cursive;font-size:1.15em;color:var(--sage-dark);font-weight:700}
+  .route .arrow{display:inline-block;color:var(--gold-dark);opacity:0;transform:translateX(-6px);transition:opacity .3s ease, transform .3s ease}
+  .entry.in .route .arrow{opacity:1;transform:translateX(0)}
+  .entry.in .route .arrow.a1{transition-delay:.6s}
+  .entry.in .route .arrow.a2{transition-delay:1s}
+  .entry.in .route .arrow.a3{transition-delay:1.4s}
+
+  .toxic-wrap{display:inline-block;position:relative;padding:0 4px}
+  .toxic-name{color:#888;font-weight:600;position:relative}
+  .toxic-strike{position:absolute;left:0;right:0;top:50%;height:3px;background:#C62828;border-radius:3px;transform:scaleX(0);transform-origin:left center;box-shadow:0 0 8px rgba(198,40,40,.5)}
+  .toxic-mark{position:absolute;top:-10px;right:-20px;font-size:18px;opacity:0}
+  .entry.in .toxic-strike{animation:strikeIn .6s cubic-bezier(.5,0,.5,1) .8s forwards}
+  .entry.in .toxic-mark{animation:fadeInPop .4s ease 1.3s forwards}
+  @keyframes strikeIn{to{transform:scaleX(1)}}
+  @keyframes fadeInPop{0%{opacity:0;transform:scale(.5)}100%{opacity:1;transform:scale(1.1)}}
+
+  .otsuka-mute{color:#9a9590;font-size:.9em;font-style:italic}
+
+  .ilang{display:inline-block;color:var(--sage-dark);font-weight:700;transition:opacity 1.5s ease, filter 1.5s ease}
+  .entry.in .ilang{animation:ilangFade 2.5s ease 1.2s forwards}
+  @keyframes ilangFade{0%{opacity:1;filter:blur(0)}40%{opacity:1;filter:blur(0)}100%{opacity:.15;filter:blur(2px)}}
+  .ilang-bonus{display:inline-block;opacity:0;color:var(--sage-dark);font-weight:700;margin-left:6px}
+  .entry.in .ilang-bonus{animation:bonusIn .6s ease 3s forwards}
+  @keyframes bonusIn{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+
+  .chill-badge{display:inline-block;background:linear-gradient(135deg,#7BA593,#5C8374);color:#fff;font-weight:700;padding:4px 14px;border-radius:20px;font-size:.95em;letter-spacing:.5px;box-shadow:0 4px 12px rgba(92,131,116,.4);transform:scale(0) rotate(-10deg)}
+  .entry.in .chill-badge{animation:badgePop .7s cubic-bezier(.2,1.8,.4,1) .5s forwards}
+  @keyframes badgePop{0%{transform:scale(0) rotate(-10deg)}60%{transform:scale(1.15) rotate(5deg)}100%{transform:scale(1) rotate(-2deg)}}
+
+  .gossip{display:inline-block;background:linear-gradient(120deg,#FFE5B4 0%,#FFE5B4 100%);background-repeat:no-repeat;background-size:100% 60%;background-position:0 90%;padding:0 4px;font-weight:600}
+  .gossip-emoji{display:inline-block}
+  .entry.in .gossip-emoji{animation:gossipShake .4s ease 1s 4}
+  @keyframes gossipShake{0%,100%{transform:rotate(0)}25%{transform:rotate(-15deg) scale(1.2)}75%{transform:rotate(15deg) scale(1.2)}}
+
+  .quote-box{display:block;margin:18px auto;max-width:90%;padding:18px 24px;background:linear-gradient(135deg,#FFFCF5,#F5E8D5);border-left:4px solid var(--gold);border-radius:4px;box-shadow:0 6px 16px rgba(212,165,116,.2);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15em;color:var(--sage-dark);text-align:center;position:relative}
+  .quote-box::before{content:"\201C";position:absolute;top:-10px;left:10px;font-size:50px;color:var(--gold);font-family:'Cormorant Garamond',serif;line-height:1}
+  .quote-shine{background:linear-gradient(90deg,var(--sage-dark) 0%,var(--gold-dark) 50%,var(--sage-dark) 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:700;animation:shimmer 4s linear infinite}
+  @keyframes shimmer{to{background-position:200% center}}
+
+  .yesman-badge{display:inline-block;background:#FFFCF5;border:2px dashed var(--gold-dark);padding:3px 12px;border-radius:6px;font-family:'Caveat',cursive;font-size:1.2em;color:var(--gold-dark);font-weight:700;transform:rotate(-3deg)}
+
+  .defensif{background:linear-gradient(120deg,#FFD6CC 0%,#FFD6CC 100%);background-repeat:no-repeat;background-size:0% 60%;background-position:0 90%;padding:0 4px;font-weight:600;color:var(--coral);transition:background-size .9s ease}
+  .entry.in .defensif{background-size:100% 60%;transition-delay:.6s}
+
+  .heart-beat{display:inline-block;color:#E57373}
+  .entry.in .heart-beat{animation:heartB 1.2s ease 1s infinite}
+  @keyframes heartB{0%,100%{transform:scale(1)}30%{transform:scale(1.25)}60%{transform:scale(1)}}
+
+  .finale{text-align:center;margin-top:100px;padding:40px 20px}
+  .finale h3{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--sage-dark);font-size:clamp(34px,5.5vw,48px);line-height:1.2;margin-bottom:20px;font-weight:600}
+  .finale .signoff{font-family:'Caveat',cursive;color:var(--gold-dark);font-size:28px;margin-top:30px}
+  .finale .emoji{font-size:38px;margin:24px 0;letter-spacing:10px}
+
+  .slot-machine{background:linear-gradient(180deg,#5C8374,#2C5F4A);padding:24px;border-radius:18px;box-shadow:0 14px 30px rgba(44,95,74,.4), inset 0 0 0 4px var(--gold);max-width:440px;margin:0 auto;transform:rotate(-1deg);position:relative}
+  .slot-machine::before{content:"🙏";position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:36px}
+  .slot-label{color:#FFFCF5;font-family:'Caveat',cursive;font-size:24px;margin-bottom:10px}
+  .slot-frame{background:#FFFCF5;border-radius:10px;height:80px;overflow:hidden;position:relative;box-shadow:inset 0 4px 10px rgba(0,0,0,.15)}
+  .slot-frame::before,.slot-frame::after{content:"";position:absolute;left:0;right:0;height:20px;z-index:2;pointer-events:none}
+  .slot-frame::before{top:0;background:linear-gradient(180deg,rgba(255,252,245,.95),transparent)}
+  .slot-frame::after{bottom:0;background:linear-gradient(0deg,rgba(255,252,245,.95),transparent)}
+  .slot-reel{display:flex;flex-direction:column;transition:transform 3s cubic-bezier(.15,.85,.25,1)}
+  .slot-item{height:80px;display:flex;align-items:center;justify-content:center;font-size:16px;text-align:center;padding:0 12px;color:var(--ink);font-weight:600;font-family:'Lora',serif}
+  .spin-btn{margin-top:16px;background:var(--gold);color:var(--sage-dark);border:none;padding:12px 28px;border-radius:30px;font-family:'Lora',serif;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 4px 0 var(--gold-dark), 0 8px 16px rgba(0,0,0,.15);transition:transform .1s, box-shadow .1s}
+  .spin-btn:hover{transform:translateY(-1px)}
+  .spin-btn:active{transform:translateY(2px);box-shadow:0 2px 0 var(--gold-dark)}
+  .spin-btn:disabled{opacity:.6;cursor:not-allowed}
+  .slot-caption{margin-top:14px;color:#FFFCF5;font-family:'Caveat',cursive;font-size:22px;min-height:28px}
+
+  .confetti{position:fixed;width:10px;height:14px;top:-20px;z-index:90;pointer-events:none;animation:confettiFall linear forwards}
+  @keyframes confettiFall{to{transform:translateY(110vh) rotate(720deg)}}
+</style>
+</head>
+<body>
+
+<div id="leaves"></div>
+
+<section id="intro">
+  <div class="deco">~ a farewell letter ~</div>
+  <h1>Untuk Mba Sarah</h1>
+  <div class="sub">ada hadiah perpisahan buat Mba...</div>
+  <div class="box-wrap" id="box" onclick="openBox()">
+    <div class="bow">🎀</div>
+    <div class="box-lid"></div>
+    <div class="box-base"></div>
+    <div class="tumbler">🥤</div>
+  </div>
+  <div class="tap-hint" id="hint">↑ klik kadonya ↑</div>
+  <div id="reveal-msg">
+    sebagai hadiah terakhir sebelum berpisah,<br>
+    aku mau kasih <b>tumbler</b> ini ke Mba Sarah —<br>
+    supaya tetep bisa <b>stay hydrated everyday</b> 💧
+  </div>
+  <button id="scroll-btn" onclick="enterBook()">buka surat dari aku →</button>
+</section>
+
+<main class="book">
+  <h2 class="title"><span class="small">~ a heartfelt letter ~</span>Dear Mba Sarah</h2>
+
+  <article class="entry left">
+    <div class="polaroid">
+      <div class="tape tl"></div>
+      <div class="photo" style="background-image:url('foto1.jpeg')">[ foto1.jpeg ]</div>
+      <div class="cap">~ stay hydrated 💧 ~</div>
+    </div>
+    <div class="note">
+      <p>aku kasih tumbler ini supaya tetep bisa ngebantu Mba Sarah <span class="hydrate">stay hydrated everyday <span class="drop">💧</span></span></p>
+      <p>perjalanan dari <span class="route">Bekasi <span class="arrow a1">→</span> kantor ujung berung</span> ini pasti udah capek, belum lagi perlu bolak-balik dari <span class="route">sekolah anak <span class="arrow a2">→</span> kantor <span class="arrow a3">→</span> pilates</span>.</p>
+      <p>so hopefully, tumbler ini akan berguna supaya Mba Sarah tidak dehidrasi wkwkwk 🥤</p>
+    </div>
+  </article>
+
+  <article class="entry right">
+    <div class="polaroid">
+      <div class="tape tr"></div>
+      <div class="photo" style="background-image:url('foto2.jpeg')">[ foto2.jpeg ]</div>
+      <div class="cap">~ thank u Mba Sarah ~</div>
+    </div>
+    <div class="note">
+      <p>Mba Sarah, thank you for being such a <span class="hl-sage">great manager</span> for me ya 🥺</p>
+      <p>at first, aku sempet takut dapet atasan yang <span class="toxic-wrap"><span class="toxic-name">toxic</span><span class="toxic-strike"></span><span class="toxic-mark">☠️</span></span> <i>(since di <span class="otsuka-mute">Otsuka</span> sebelumnya aku dapet experience yang jelek bgt)</i></p>
+      <p>tapi ternyata, pas masuk Jakmall ketakutan aku <span class="ilang">ilang semuanya</span><span class="ilang-bonus">✨ poof! ✨</span></p>
+    </div>
+  </article>
+
+  <article class="entry center">
+    <div class="note">
+      <p>aku seneng bisa banyak belajar dalam jangka waktu 1 tahun yang singkat ini.</p>
+      <p>banyak banget hal baru yang aku dapetin lebih banyak di sini dibandingkan company sebelumnya — and it's all thanks to you, Mba Sarah yang selalu <span class="hl-gold">kasih kebebasan aku buat explore</span>.</p>
+    </div>
+  </article>
+
+  <article class="entry left">
+    <div class="polaroid">
+      <div class="tape tl"></div>
+      <div class="tape tr"></div>
+      <div class="photo" style="background-image:url('foto3.jpeg')">[ foto3.jpeg ]</div>
+      <div class="cap">~ chill manager era ~</div>
+    </div>
+    <div class="note">
+      <p>aku juga ga expect karena Mba Sarah <span class="chill-badge">se-chill itu</span> bisa ngobrolin banyak hal...</p>
+      <p>...<span class="gossip">ngegibah seliar-liarnya <span class="gossip-emoji">🗣️</span></span>, sampe seterbuka itu buat sharing banyak banget hal yang mungkin harusnya tidak boleh didenger banyak orang di kantor wkwkwk 🤫</p>
+    </div>
+  </article>
+
+  <article class="entry center">
+    <div class="note">
+      <p>aku bener-bener mau berterima kasih juga ke Mba Sarah karena udah <span class="hl-gold">percaya aku dari sebelum aku masuk</span>.</p>
+      <p>meskipun dari awal Mba Sarah udah sempet ngerasa aku...</p>
+      <div class="quote-box">
+        <span class="quote-shine">"too good to be true"</span>
+      </div>
+      <p>...tapi tetep aja Mba memutuskan untuk hire aku dan ngasih banyak banget kepercayaan di bidang <b>people development</b> dan project-project keren kita lainnya 💼✨</p>
+    </div>
+  </article>
+
+  <article class="entry center">
+    <div class="note">
+      <p>maaf kalo aku punya banyak kesalahan selama di Jakmall ya Mba.</p>
+      <p>aku masih inget bgt saran dari Mba Sarah supaya aku perlu berhati-hati sebagai seseorang yang bukan <span class="yesman-badge">"yes-man"</span></p>
+      <p>...dan akan aku terus terapin ke depannya agar aku nggak menjadi <span class="defensif">defensif</span> kalo menerima kritik dari orang lain 🙏</p>
+    </div>
+  </article>
+
+  <article class="entry center">
+    <div class="note" style="background:linear-gradient(135deg,#FFFCF5,#F5E8D5);border:2px dashed var(--sage)">
+      <p>semoga kita bisa kerja sama lagi di lain kesempatan yaa Mba 🥺</p>
+      <p>kalo <i>salary &amp; career path</i> bukan jadi my <b>major push factor</b>, mungkin aku akan memilih stay di Jakmall aja dalam jangka waktu lebih lama — biar bisa kerja bareng <span class="hl-sage">Mba Sarah, Syesye, dan Tsana</span> <span class="heart-beat">💚</span></p>
+    </div>
+  </article>
+
+  <article class="entry center">
+    <div class="slot-machine">
+      <div class="slot-label">~ doa terbaik untuk Mba Sarah ~</div>
+      <div class="slot-frame">
+        <div class="slot-reel" id="reel">
+          <div class="slot-item">🌟 selalu dikelilingi orang-orang baik</div>
+          <div class="slot-item">👶 anak-anak Mba selalu sehat</div>
+          <div class="slot-item">💰 rezeki yang lebih melimpah</div>
+          <div class="slot-item">🌟 selalu dikelilingi orang-orang baik</div>
+        </div>
+      </div>
+      <button class="spin-btn" id="spinBtn" onclick="spinSlot()">🙏 SPIN doa terbaik</button>
+      <div class="slot-caption" id="slotCap">aamiin paling kenceng ✨</div>
+    </div>
+  </article>
+
+  <div class="finale entry center">
+    <h3>sampe ketemu di<br>lain kesempatan,<br>Mba Sarah!!! 🥹</h3>
+    <div class="emoji">🥤 ☕ 💚 ✨</div>
+    <div class="signoff">~ with love, tie ~</div>
+  </div>
+</main>
+
+<script>
+  const chars = ['💧','🌿','✨','☕','🍃'];
+  const cont = document.getElementById('leaves');
+  for(let i=0;i<16;i++){
+    const l = document.createElement('div');
+    l.className='leaf';
+    l.textContent = chars[i%chars.length];
+    l.style.left = Math.random()*100+'vw';
+    l.style.animationDuration = (10+Math.random()*15)+'s';
+    l.style.animationDelay = (Math.random()*10)+'s';
+    l.style.fontSize = (14+Math.random()*18)+'px';
+    cont.appendChild(l);
+  }
+
+  function openBox(){
+    const box = document.getElementById('box');
+    if(box.classList.contains('open')) return;
+    box.classList.add('open');
+    document.getElementById('hint').style.display='none';
+  }
+  function enterBook(){
+    document.getElementById('intro').classList.add('gone');
+    document.body.style.overflow='auto';
+    setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),100);
+  }
+  document.body.style.overflow='hidden';
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.classList.contains('finale')) fireConfetti();
+      }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.entry').forEach(el=>io.observe(el));
+
+  const slotOptions = [
+    {txt:'🌟 selalu dikelilingi <b>orang-orang baik</b>', cap:'circle yang sehat & supportive 💚'},
+    {txt:'👶 anak-anak Mba <b>selalu sehat</b>', cap:'anak sehat = mama happy 🥰'},
+    {txt:'💰 rezeki yang <b>lebih melimpah</b>', cap:'duit berlimpah, tenang batin 💸'},
+    {txt:'🍱 selalu bisa <b>mentraktir bawahannya</b> WKWKWK', cap:'aamiin paling kenceng kita semua 🤲😆'},
+    {txt:'🧘‍♀️ pilates makin <b>pro level</b>', cap:'core strength tak tertandingi 💪'},
+    {txt:'✨ <b>ALL OF THE ABOVE</b> ✨', cap:'JACKPOT! semua doa terkabul 🎉'},
+  ];
+  let spinning=false;
+  function spinSlot(){
+    if(spinning) return;
+    spinning=true;
+    const reel=document.getElementById('reel');
+    const btn=document.getElementById('spinBtn');
+    const cap=document.getElementById('slotCap');
+    btn.disabled=true;
+    cap.textContent='';
+    const result = Math.floor(Math.random()*slotOptions.length);
+    const items = [];
+    for(let i=0;i<20;i++){
+      items.push(slotOptions[Math.floor(Math.random()*slotOptions.length)]);
+    }
+    items.push(slotOptions[result]);
+    reel.style.transition='none';
+    reel.style.transform='translateY(0)';
+    reel.innerHTML = items.map(o=>`<div class="slot-item">${o.txt}</div>`).join('');
+    requestAnimationFrame(()=>{
+      reel.style.transition='transform 3s cubic-bezier(.15,.85,.25,1)';
+      reel.style.transform=`translateY(-${(items.length-1)*80}px)`;
+    });
+    setTimeout(()=>{
+      cap.textContent = slotOptions[result].cap;
+      btn.disabled=false;
+      spinning=false;
+    },3100);
+  }
+
+  let confettiDone=false;
+  function fireConfetti(){
+    if(confettiDone) return; confettiDone=true;
+    const colors=['#5C8374','#D4A574','#E8896B','#FFFCF5','#7BA593','#A57C4D'];
+    for(let i=0;i<100;i++){
+      const c=document.createElement('div');
+      c.className='confetti';
+      c.style.left=Math.random()*100+'vw';
+      c.style.background=colors[i%colors.length];
+      c.style.animationDuration=(2+Math.random()*2.5)+'s';
+      c.style.animationDelay=(Math.random()*1.5)+'s';
+      c.style.transform=`rotate(${Math.random()*360}deg)`;
+      c.style.borderRadius=Math.random()>.5?'50%':'2px';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),5000);
+    }
+  }
+</script>
+</body>
+</html>
